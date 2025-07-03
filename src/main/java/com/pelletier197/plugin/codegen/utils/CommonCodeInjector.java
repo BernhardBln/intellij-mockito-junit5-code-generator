@@ -157,7 +157,7 @@ public class CommonCodeInjector {
       }
     }
 
-    String expString = "private" + (isInnerTestClass(psiClass) ? "" : " static") + " final " + typeName + " " + newFieldName + " = " + assignment + ";";
+    String expString = (isInnerTestClass(psiClass) ? "" : "static ") + "final " + typeName + " " + newFieldName + " = " + assignment + ";";
     PsiField field = javaPsiFacade.getElementFactory().createFieldFromText(expString, psiClass);
 
     psiClass.add(field);
